@@ -11,9 +11,7 @@ app.secret_key = 'f8wv3w2f>v9j4sEuhcNYydAGMzzZJgkGgyHE9gUqaJcCk^f*^o7fQyBT%XtTvc
 
 
 class Entry(db.Model):
-    '''
-    Stores blog entries
-    '''
+    
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(180))
     body = db.Column(db.String(1000))
@@ -37,10 +35,7 @@ def index():
 
 @app.route("/blog")
 def display_blog_entries():
-    '''
-    Either list one entry with the given ID
-    Or list all blog entries (in default or newest order)
-    '''
+    
     # TODO refactor to use routes with variables instead of GET parameters
     entry_id = request.args.get('id')
     if (entry_id):
@@ -59,10 +54,7 @@ def display_blog_entries():
 #
 @app.route('/new_entry', methods=['GET', 'POST'])
 def new_entry():
-    '''
-    GET: Display form for new blog entry
-    POST: create new entry or redisplay form if values are invalid
-    '''
+   
     if request.method == 'POST':
         new_entry_title = request.form['title']
         new_entry_body = request.form['body']
