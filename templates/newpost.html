@@ -1,15 +1,17 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-<h1>How's your day?</h1>
-<form action="/new_entry" method="post">
-
-        <label for="title_field">Name your entry</label>
-        <input id="title_field" name="title" type="text" value="{{ new_entry_title }}">
-
-        <label for="body_field"> Talk about it:</label>
-        <textarea rows="4" cols="50" id="body_field" name="body" >{{ new_entry_body }}</textarea>
-
-    <input id="submit_button" type="submit" value="Save">
+<h1>new post</h1>
+<form method='POST'>
+    <label for='title'>title</label><br>
+    <input type='text' name='title'/><br>
+    <label for='body'>post</label><br>
+    <textarea name='body' rows='10' cols='40'></textarea><br>
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+        <span class='error'>{{ message }}</span><br>
+        {% endfor %}
+    {% endwith %}
+    <input type='submit' value='Submit' class='submit'/>
 </form>
 {% endblock %}

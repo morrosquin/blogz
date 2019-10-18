@@ -1,31 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>{{title}}</title>
-        
+        <title>Blogz</title>
+        <style type='text/css'>
+            .container{
+                width: 800px;
+                margin: auto;
+            }
+            .error{
+                color: red;
+            }
+            .leftnav{
+                float: left;
+                margin-right: 20px;                
+            }
+            .rightnav{
+                float: right;
+                margin-left: 20px;
+            }
+            body{
+                font-family: sans-serif;
+            }
+            nav{
+                display: block;
+                overflow: auto;
+                font-size: 1.2em;
+                margin-top: 30px;
+                margin-bottom: 40px;
+            }
+        </style>
     </head>
-<body>
-    
-    <main>
-        <nav>
-            <a href='/blog'>List all entries<br />(oldest-first)</a>
-            <a href='/blog?sort=newest'>List all entries<br />(newest-first)</a>
-            <a href='/new_entry'>Create new entry</a>
-        </nav>
-
-        <div class="container">
-           
-            {% with messages = get_flashed_messages() %}
-                {% for message in messages %}
-                    <div class="flash_message">{{message|safe}}</div>
-                {% endfor %}
-            {% endwith %}
-
+    <body>
+        <div class='container'>
+            <nav>
+                <a href='/' class='leftnav'>home</a>
+                <a href='/allPosts' class='leftnav'>all posts</a>
+                <a href='/newPost' class='leftnav'>new post</a>
+                <a href='/logout' class='rightnav'>logout</a>
+                <a href='/login' class='rightnav'>login</a>               
+            </nav>        
             {% block content %}
             {% endblock %}
-
-        </div> 
-    </main>
-
-</body>
+        </div>
+    </body>
 </html>
